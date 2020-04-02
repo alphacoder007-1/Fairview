@@ -12,7 +12,7 @@ namespace DAL.Migrations
                 type: "varchar(50)",
                 nullable: false,
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "nvarchar(max)", 
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
