@@ -69,6 +69,28 @@ namespace Web.Controllers
             Product prd = db.Products.Where(p => p.ProductId == Id).FirstOrDefault();
             return View("Create",prd);
         }
+        [HttpPost]
+        public IActionResult Edit(Product model)
+        {
+            try
+            {
+                // db.Products.Update(model);
+
+                db.Entry(model).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
+                //var product = db.Products.Where(p => p.ProductId == model.ProductId).FirstOrDefault();
+                //product.Unitprice = model.Unitprice;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+
+            }
+
+            ViewBag.Categories = db.Categories.ToList();
+            return View("Create");
+        }
 
         public IActionResult Delete(int id)
         {
