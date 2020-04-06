@@ -12,8 +12,8 @@ namespace DAL.Migrations
                 {
                     CategoryId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Description = table.Column<string>(type: "varchar(500)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -26,9 +26,9 @@ namespace DAL.Migrations
                 {
                     ProductId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(type: "varchar(50)", nullable: false),
                     Unitprice = table.Column<decimal>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(type: "varchar(500)", nullable: false),
                     CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -41,6 +41,21 @@ namespace DAL.Migrations
                         principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "Description", "Name" },
+                values: new object[] { 1, "Grocery", "Grocery" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "Description", "Name" },
+                values: new object[] { 2, "Stationary", "Stationary" });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "Description", "Name" },
+                values: new object[] { 3, "Hardware", "Hardware" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",

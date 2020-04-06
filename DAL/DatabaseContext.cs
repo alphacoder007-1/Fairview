@@ -17,5 +17,14 @@ namespace DAL
                                                     persist security info=True;user id=sa;password=dotnettricks");
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Category>().HasData(
+                new Category() { CategoryId = 1, Name="Grocery", Description="Grocery" },
+                new Category() { CategoryId = 2, Name = "Stationary", Description = "Stationary" },
+                new Category() { CategoryId = 3, Name = "Hardware", Description = "Hardware" }
+            );
+        }
+
     }
 }

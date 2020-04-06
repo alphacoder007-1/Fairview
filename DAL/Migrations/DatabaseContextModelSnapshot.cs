@@ -35,6 +35,26 @@ namespace DAL.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            Description = "Grocery",
+                            Name = "Grocery"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            Description = "Stationary",
+                            Name = "Stationary"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            Description = "Hardware",
+                            Name = "Hardware"
+                        });
                 });
 
             modelBuilder.Entity("DAL.Product", b =>
