@@ -10,9 +10,19 @@ namespace DAL
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
 
+        public DatabaseContext()
+        {
+            
+        }
+
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) :base(options)
+        {
+            
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"data source=localhost,1433;
+            optionsBuilder.UseSqlServer(@"data source=172.17.0.2,1433;
                                                     initial catalog=FairviewDB;
                                                     persist security info=True;user id=sa;password=Purple1!");
         }
