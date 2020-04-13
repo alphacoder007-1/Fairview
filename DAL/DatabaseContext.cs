@@ -12,9 +12,9 @@ namespace DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"data source=(local)\sqlexpress;
+            optionsBuilder.UseSqlServer(@"data source=localhost,1433;
                                                     initial catalog=FairviewDB;
-                                                    persist security info=True;user id=sa;password=dotnettricks");
+                                                    persist security info=True;user id=sa;password=Purple1!");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
